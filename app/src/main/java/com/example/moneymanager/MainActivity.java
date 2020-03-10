@@ -50,7 +50,11 @@ public class MainActivity extends AppCompatActivity  {
                     startActivity(i);
                     finish();
                      */
-                    Log.d("Running","Already logged in");
+
+                    Log.e("Running","Already logged in");
+                    Intent i=new Intent(MainActivity.this,home.class);
+                    startActivity(i);
+                    finish();
                 }
 
 

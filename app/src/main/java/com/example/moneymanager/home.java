@@ -1,12 +1,16 @@
 package com.example.moneymanager;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -36,6 +40,7 @@ public class home extends AppCompatActivity {
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        View navHeaderview=navigationView.getHeaderView(0);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -45,6 +50,14 @@ public class home extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        TextView usernameInNav= navHeaderview.findViewById(R.id.textViewinNav);
+        FirebaseUser currentUser;
+        FirebaseAuth mAuth= FirebaseAuth.getInstance();
+        currentUser=mAuth.getCurrentUser();
+        assert currentUser != null;
+        Log.e("Fragment Display","here" );
+        usernameInNav.setText(currentUser.getEmail());
+
     }
 
     @Override
