@@ -39,11 +39,15 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
     private FirebaseAuth mAuth;
+    private TextView email;
+    private TextView passwword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mAuth=FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
 
 
     }
